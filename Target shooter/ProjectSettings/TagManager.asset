@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Text
+  - Delete
+  - Spawm
+  - ParticleApple
+  - Target
+  - Pilar
+  - Earth
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - Arrow
+  - Text
+  - 
+  - 
+  - Apple
+  - 'Target '
+  - Pilar
+  - Ground
+  - Cloud
+  - Sly
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Sky
+    uniqueID: 1501137159
+    locked: 0
+  - name: Ground
+    uniqueID: 2267697529
+    locked: 0
+  - name: Pilar
+    uniqueID: 344483797
+    locked: 0
+  - name: Bow
+    uniqueID: 3049827933
+    locked: 0
+  - name: Apple
+    uniqueID: 2299167583
+    locked: 0
+  - name: Target
+    uniqueID: 968895769
+    locked: 0
+  - name: Cloud
+    uniqueID: 1098081023
+    locked: 0
+  - name: Arrow
+    uniqueID: 2018068101
+    locked: 0
