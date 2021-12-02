@@ -8,24 +8,28 @@ using UnityEngine.Events;
 public class BowScript : MonoBehaviour
 {
     UnityEvent Shot;
-   
-    [SerializeField] private Transform shotPoint;
+    [Header("Text")]
     [SerializeField] private Text TextNumberOfShotes;
-    [SerializeField] private Text ScorePanelWin;
-    [SerializeField] private GameObject starHelper;
+    [SerializeField] private Transform shotPoint;
+    [Header("Points")]
     [SerializeField] private GameObject point;
     [SerializeField] private GameObject[] points;
+    [SerializeField] private float spaceBetweenPoints;
+    [SerializeField] private int numberOfpoints;
+    [Header("GameObjects")]
+    [SerializeField] private GameObject starHelper;
     [SerializeField] private GameObject arrow;
+    [Header("UI elements")]
     [SerializeField] private GameObject PanelWin;
     [SerializeField] private GameObject PanelLose;
     [SerializeField] private GameObject Joystick;
-    [SerializeField] public static int countStar=0;
-    [SerializeField] private int numberOfpoints;
-    [SerializeField] private int NumberOfShotes;
+    public static int countStar=0;
+    [Header("Check score")]
     [SerializeField] private int CheckAllScore;
     [SerializeField] private int AlternativeScore;
+    [Header("")]
+    [SerializeField] private int NumberOfShotes;
     [SerializeField] private float launchForce;
-    [SerializeField] private float spaceBetweenPoints;
     [SerializeField] public static int checkArrowFly;
     [SerializeField] private int checkArrowFlyHepler;
     private InstantiateStar star;
@@ -72,6 +76,7 @@ public class BowScript : MonoBehaviour
     #endregion
     public void Update()
     {
+        Debug.Log(Score.allIntScore);
         Vector2 bowPosition = transform.position;
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction = mousePosition - bowPosition;
@@ -97,16 +102,21 @@ public class BowScript : MonoBehaviour
         if (Score.allIntScore == CheckAllScore  
             || Score.allIntScore == AlternativeScore && NumberOfShotes <= 0 && checkArrowFlyHepler == checkArrowFly) 
         {
-            ScorePanelWin.text = (Score.allIntScore + NumberOfShotes*50).ToString();
+            Score.AddScore(NumberOfShotes * 50);
             PanelWin.SetActive(true);
-            if (Score.allIntScore == CheckAllScore)
+            if (Score.allIntScore >= CheckAllScore && NumberOfShotes > 0)
             {
                 countStar = 3;
                 star.Instantiate();
             }
-            else
+            if (Score.allIntScore >= CheckAllScore && NumberOfShotes == 0)
             {
                 countStar = 2;
+                star.Instantiate();
+            }
+            if (Score.allIntScore >= AlternativeScore && Score.allIntScore <=CheckAllScore)
+            {
+                countStar = 1;
                 star.Instantiate();
             }
             this.GetComponent<BowScript>().enabled = false;
@@ -126,31 +136,5 @@ public class BowScript : MonoBehaviour
         Vector2 position = (Vector2)shotPoint.position + (direction.normalized * launchForce * t) + 0.5f * Physics2D.gravity * (t * t);
         return position;
     }
-    #region SceneMenager
-    public void Restart()
-    {
-
-        Scene SceneLoaded = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(SceneLoaded.buildIndex);
-        TargetBox.scoreBox = 0;
-        TargetBox1.scoreBox2Target = 0;
-        AppleBox.ScoreApple = 0;
-        Score.allIntScore = 0;
-        checkArrowFly = 0;
-        Shot.RemoveListener(Shoot);
-
-    }
-    public void GoToScenes()
-    {
-        Scene sceneLoaded = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(sceneLoaded.buildIndex + 1);
-        TargetBox.scoreBox = 0;
-        AppleBox.ScoreApple = 0;
-        Score.allIntScore = 0;
-        checkArrowFlyHepler = NumberOfShotes;
-        Shot.RemoveListener(Shoot);
-
-    }
-    #endregion
 
 }

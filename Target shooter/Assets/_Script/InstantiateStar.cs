@@ -18,7 +18,12 @@ public class InstantiateStar : MonoBehaviour
     
     private IEnumerator Star()
     {
-        if (BowScript.countStar==2)
+        if (BowScript.countStar ==1)
+        {
+            yield return new WaitForSeconds(.2f);
+            iStar1.SetActive(true);
+        }
+        else if (BowScript.countStar==2)
         {
             yield return new WaitForSeconds(.2f);
             iStar1.SetActive(true);

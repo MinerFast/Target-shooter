@@ -7,7 +7,7 @@ public class Arrow : MonoBehaviour
 {
     Rigidbody2D rb;
     private bool hasHit;
-    public static bool check; //Проверка сделан ли выстрел 
+    public static bool check; 
     void Start()
     {
         check = false;
@@ -30,7 +30,6 @@ public class Arrow : MonoBehaviour
         }
         this.GetComponent<BoxCollider2D>().enabled = false;
         BowScript.checkArrowFly++;
-        Debug.Log(BowScript.checkArrowFly);
         hasHit = true;
         rb.velocity = Vector2.zero;
         rb.isKinematic = true;

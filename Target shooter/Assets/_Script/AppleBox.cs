@@ -5,9 +5,8 @@ using UnityEngine.UI;
 
 public class AppleBox : MonoBehaviour
 {
-    [SerializeField] public ParticleSystem ParticleApple;
+    [SerializeField] private ParticleSystem ParticleApple;
     private GameObject Apple;
-    public static int ScoreApple;
     void Start()
     {
         ParticleApple.Stop();
@@ -18,10 +17,11 @@ public class AppleBox : MonoBehaviour
     {
         if (collision.GetComponent<Arrow>())
         {
-            ScoreApple = +1000;
+            Score.AddScore(1000);
             Destroy(Apple);
             ParticleApple.Play();
         }
         
     }
+   
 }

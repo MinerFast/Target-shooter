@@ -5,31 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class SceneHelper : MonoBehaviour
 {
-    public void FirstLvl()
+    public void ChoisetLvl(int indexScene)
     {
-        SceneManager.LoadScene("1lvl");
-    }
-    public void TwoLvl()
-    {
-        SceneManager.LoadScene("2lvl");
-    }
-    public void Lvls()
-    {
-        SceneManager.LoadScene("lvls");
-    }
-    public void Shop()
-    {
-        SceneManager.LoadScene("Shop");
+        SceneManager.LoadScene(indexScene);
     }
     public void Restart()
     {
         Scene SceneLoaded = SceneManager.GetActiveScene();
         SceneManager.LoadScene(SceneLoaded.buildIndex);
+        Score.allIntScore = 0;
+        BowScript.checkArrowFly = 0;
     }    
     public void NextLevel()
     {
         Scene sceneLoaded = SceneManager.GetActiveScene();
         SceneManager.LoadScene(sceneLoaded.buildIndex + 1);
+        Score.allIntScore = 0;
+        BowScript.checkArrowFly = 0;
     }
     public void Menu()
     {

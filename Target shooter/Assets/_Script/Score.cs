@@ -6,13 +6,15 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    public Text iAllScore;
+    [SerializeField] private Text AllScoreText;
     public static int allIntScore;
 
-    public void Update()
+    void Update()
     {
-        
-        allIntScore = TargetBox.scoreBox + AppleBox.ScoreApple+TargetBox1.scoreBox2Target;
-        iAllScore.text = allIntScore.ToString();
+        AllScoreText.text = allIntScore.ToString();
+    }
+    public static void AddScore(int score)
+    {
+        allIntScore += score;
     }
 }

@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class TargetBox1 : MonoBehaviour
+public class TargetBox2 : MonoBehaviour
 {
     [SerializeField] private int nubmerOfShots = 0;
 
